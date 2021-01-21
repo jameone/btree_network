@@ -44,7 +44,7 @@ fn main() {
 Add the following to your `Cargo.toml` file:
 ```toml
 [dependencies]
-btree_network = "0.1.3"
+btree_network = "0.2.2"
 ```
 
 ## API
