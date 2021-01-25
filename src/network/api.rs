@@ -150,9 +150,9 @@ where
 /// network.add_edge(String::from("origin"), String::from("destination"));
 ///
 /// assert!(network.adjacent(String::from("origin"), String::from("destination")).unwrap());
-/// // Note: the network is directed, and the definition of adjacent
+/// // Note: the network is undirected, and the definition of adjacent
 /// // can be phrased, if there exists a relationship from x to y. Therefore
-/// // A and B adjacent does not imply B and A are adjacent.
+/// // A and B adjacent implies B and A are adjacent.
 /// assert!(network.adjacent(String::from("destination"), String::from("origin")).unwrap());
 /// ```
 pub trait Adjacent<T> {
