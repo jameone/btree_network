@@ -27,7 +27,7 @@ is required for reason the implementation relies on `BTreeMap`
 use crate::BTreeNetwork;
 
 fn main() {
-    let mut network: BTreeNetwork<String, String> = BTreeNetwork::new();
+    let mut network: BTreeNetwork<String> = BTreeNetwork::new();
     // Add nodes.
     network.add_vertex(String::from("Tarzan"));
     network.add_vertex(String::from("Jane"));
