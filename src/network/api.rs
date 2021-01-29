@@ -132,7 +132,7 @@ where
     T: Ord,
 {
     type Error;
-    fn remove_vertex(&mut self, x: T) -> Result<(), Self::Error>;
+    fn remove_vertex(&mut self, x: T) -> Result<BTreeSet<T>, Self::Error>;
 }
 
 /// `Adjacent` tests whether there is an edge from the vertex x to the vertex y.

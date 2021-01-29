@@ -8,7 +8,7 @@ use core::default::Default;
 use serde::{Deserialize, Serialize};
 
 pub use api::*;
-use crate::error::Error;
+use crate::Error;
 
 /// `BTreeNetwork` is an implementation of a network (abstract data structure)
 /// which utilizes `BTreeMap` for the edge and vertex adjacency lists.
@@ -127,18 +127,18 @@ where
     T: Ord + Clone,
 {
     type Error = Error;
-    fn remove_vertex(&mut self, x: T) -> Result<(), Self::Error> {
+    fn remove_vertex(&mut self, x: T) -> Result<BTreeSet<T>, Self::Error> {
         // When removing a vertex, of course, we should remove
         // all adjacent edges;
         if let Some(adj_x) = self.vertices.get(&x) {
-            adj_x
-                .clone()
-                .into_iter()
-                .try_for_each(|y| self.remove_edge(x.clone(), y))?;
+            let adj_x: BTreeSet<T> = adj_x.iter().cloned().collect();
+            for y in adj_x.clone() {
+                self.remove_edge(x.clone(), y)?;
+            }
             // At this point, the adjacency list should be empty,
             // and can be removed.
             self.vertices.remove(&x);
-            return Ok(());
+            return Ok(adj_x);
         }
         Err(Error::VertexDoesNotExist)
     }
