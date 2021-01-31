@@ -1,6 +1,6 @@
 # Binary Tree Network (btree_network)
 
-[![CodeBuild]][CodeBuild]
+![CodeBuild]
 [![Version badge]][crates.io]
 [![Docs badge]][docs.rs]
 
